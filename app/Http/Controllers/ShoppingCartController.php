@@ -26,4 +26,28 @@ class ShoppingCartController extends Controller
       // dd($shoppingCart);
       return view('cart.index', compact('shoppingCart'));
     }
+
+    public function destroy(Request $request){
+      // dd($request);
+      $id = $request->input('id');
+      $oldCart = (Session::has('cart')) ? Session::get('cart') : null;
+      $shoppingCart = new ShoppingCart($oldCart);
+      $shoppingCart->removeProduct($id);
+
+      $request->session()->put('cart', $shoppingCart);
+
+      return redirect()->back();
+
+    }
+
+    public function deleteByOne(Request $request){
+      $id = $request->input('id');
+      $oldCart = (Session::has('cart')) ? Session::get('cart') : null;
+      $shoppingCart = new ShoppingCart($oldCart);
+      $shoppingCart->removeByOne($id);
+
+      $request->session()->put('cart', $shoppingCart);
+
+      return redirect()->back();
+    }
 }

@@ -36,4 +36,21 @@ class ShoppingCart
     $this->totalPrice += $dish->price;
   }
 
+  public function removeProduct($id){
+    $this->totalQuantity -= $this->product[$id]['quantity'];
+    $this->totalPrice -= $this->product[$id]['price'];
+    unset($this->product[$id]);
+  }
+
+  public function removeByOne($id){
+    $this->totalQuantity --;
+    $this->totalPrice -= $this->product[$id]['item']['price'];
+    $this->product[$id]['quantity']--;
+    $this->product[$id]['price']-= $this->product[$id]['item']['price'];;
+    if($this->product[$id]['quantity']== 0){
+      unset($this->product[$id]);
+    }
+
+  }
+
 }

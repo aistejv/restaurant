@@ -43,5 +43,7 @@ Route::group(['middleware'=> ['auth'], 'prefix'=>'admin'],function (){
 
 Route::post('/shoppingcart', 'ShoppingCartController@addToCart')->name('add.cart');
 Route::get('/shoppingcart', 'ShoppingCartController@index')->name('show.cart');
+Route::post('/shoppingcartDishDelete', 'ShoppingCartController@destroy')->name('cart.dish.delete');
+Route::post('/deleteByOne', 'ShoppingCartController@deleteByOne')->name('deleteByOne');
 
 Route::get('countries', 'HomeController@countries');
