@@ -11,19 +11,15 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center mb-5 ftco-animate">
-          <h2 class="display-4">Today's Menu</h2>
-          <div class="row justify-content-center">
-            <div class="col-md-7">
-              <p class="lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-            </div>
-          </div>
+          <h2 class="display-4">All of our dishes</h2>
         </div>
 
-        <div class="row">
+        {{-- Add a dish button --}}
+        {{-- <div class="row">
           <div class="col-md-2">
             <p class="mb-0"><a href="{{route('add.dish')}}" class="btn btn-primary btn-sm">Add a dish</a></p>
           </div>
-        </div>
+        </div> --}}
 
         <div class="col-md-12 text-center">
 
@@ -59,7 +55,11 @@
                       <h5 class="mt-0">{{$dish->title}}</h5>
                       <p>{{$dish->description}}</p>
                       <h6 class="text-primary menu-price">{{$dish->price}} &euro;</h6>
-                      <p class="mb-0"><a href="{{route('one.dish', $dish->id)}}" class="btn btn-primary btn-sm">Edit</a></p>
+                      <form method="post" action="{{route('add.cart')}}">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$dish->id}}">
+                      <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
+                      </form>
                     </div>
                   </div>
                 </div>

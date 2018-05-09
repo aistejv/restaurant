@@ -41,4 +41,7 @@ Route::group(['middleware'=> ['auth'], 'prefix'=>'admin'],function (){
 
 });
 
+Route::post('/shoppingcart', 'ShoppingCartController@addToCart')->name('add.cart');
+Route::get('/shoppingcart', 'ShoppingCartController@index')->name('show.cart');
+
 Route::get('countries', 'HomeController@countries');
