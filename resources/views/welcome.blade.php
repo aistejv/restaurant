@@ -2,9 +2,9 @@
 @extends('layout.master')
 
 @section('content')
-  @if(session('success'))
+  @if(session('message'))
       <div class="alert alert-success col-sm-2 my-5">
-        {{session('success')}}
+        {{session('message')}}
       </div>
   @endif
   <section class="ftco-cover" style="background-image: url(images/bg_3.jpg);" id="section-home">
@@ -67,7 +67,7 @@
                 </div>
               </div>
             </div>
-          @endforeach
+            @endforeach
           </div>
         </div>
       </div>
@@ -364,39 +364,14 @@
             </div>
           </div>
         </div>
-
+        @foreach($images as $image)
         <div class="col-md-4 ftco-animate">
-          <a href="images/menu_1.jpg" class="ftco-thumbnail image-popup">
-            <img src="images/menu_1.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
+          <a href="#" class="ftco-thumbnail image-popup">
+            <img src="{{$image->image_url}}" alt="image-url" class="img-fluid">
           </a>
         </div>
-        <div class="col-md-4 ftco-animate">
-          <a href="images/menu_2.jpg" class="ftco-thumbnail image-popup">
-            <img src="images/menu_2.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-md-4 ftco-animate">
-          <a href="images/menu_3.jpg" class="ftco-thumbnail image-popup">
-            <img src="images/menu_3.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
-          </a>
-        </div>
-
-        <div class="col-md-4 ftco-animate">
-          <a href="images/menu_2.jpg" class="ftco-thumbnail image-popup">
-            <img src="images/menu_2.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-md-4 ftco-animate">
-          <a href="images/menu_3.jpg" class="ftco-thumbnail image-popup">
-            <img src="images/menu_3.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-md-4 ftco-animate">
-          <a href="images/menu_1.jpg" class="ftco-thumbnail image-popup">
-            <img src="images/menu_1.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
-          </a>
-        </div>
-
+        @endforeach
+        
       </div>
     </div>
   </section>

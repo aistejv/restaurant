@@ -8,7 +8,7 @@
     <h1><i class="fas fa-shopping-basket"></i> Your Shopping Cart:</h1>
 
     <div class="row">
-    @if($shoppingCart->totalQuantity !==0 )
+    @if(isset($shoppingCart) && $shoppingCart->totalQuantity !==0 )
       @foreach($shoppingCart->product as $product)
         <div class="col-md-5 ftco-animate">
           <h5 class="mt-0">Dish: {{$product['item']['title']}}</h5>

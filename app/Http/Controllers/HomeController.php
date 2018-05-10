@@ -24,9 +24,12 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {   $promos = Dish::latest()->take(9)->get();
-        return view('welcome', compact('promos'));
+        $images = Dish::all();
+        return view('welcome', compact('promos', 'images'));
     }
+
 
     // public function countries()
     // {
