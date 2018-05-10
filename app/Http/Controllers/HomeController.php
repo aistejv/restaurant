@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Countries;
+use App\Dish;
 
 class HomeController extends Controller
 {
@@ -23,13 +24,15 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('home');
+    {   $promos = Dish::latest()->take(9)->get();
+        return view('welcome', compact('promos'));
     }
 
-    public function countries()
-    {
-        $countries = Countries::all();
-        // return view('countries',compact('countries'));
-    }
+    // public function countries()
+    // {
+    //     $countries = Countries::all();
+    //     dd($countries);
+    //
+    //     // return view('countries',compact('countries'));
+    // }
 }

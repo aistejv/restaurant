@@ -138,6 +138,7 @@ desired effect
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a href="{{route('admin.dishes')}}"><i class="fa fa-link"></i> <span>Dishes</span></a></li>
                 <li><a href="{{route('admin.mains')}}"><i class="fa fa-link"></i> <span>Mains</span></a></li>
+                <li><a href="{{route('admin.reservations')}}"><i class="fa fa-link"></i> <span>Reservations</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
                         <span class="pull-right-container">

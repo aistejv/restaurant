@@ -11,13 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('welcome');
 
-Auth::routes();
+// Auth::routes();
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Registration Routes...
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
+
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/dishes', 'DishController@index')->name('all.dishes');
 Route::get('/dishes/{id}', 'DishController@show')->name('one.dish');
@@ -39,6 +48,14 @@ Route::group(['middleware'=> ['auth'], 'prefix'=>'admin'],function (){
   Route::get('/mains/{main}/edit', 'MainController@edit')->name('main.edit');
   Route::put('/mains/{main}/update', 'MainController@update')->name('main.update');
 
+  Route::get('/reservations', 'ReservationController@index')->name('admin.reservations');
+  // Route::get('/reservations/{id}', 'ReservationController@show')->name('one.reservation');
+  Route::get('/reservations/create', 'ReservationController@create')->name('create.reservation');
+  Route::post('/reservations', 'ReservationController@adminstore')->name('admin.add.reservation');
+  Route::get('/reservations/{reservation}/edit','ReservationController@edit')->name('reservation.edit');
+  Route::put('/reservations/{reservation}/update', 'ReservationController@update')->name('reservation.update');
+  Route::delete('/reservations/{reservation}','ReservationController@destroy')->name('reservation.delete');
+
 });
 
 Route::post('/shoppingcart', 'ShoppingCartController@addToCart')->name('add.cart');
@@ -46,4 +63,4 @@ Route::get('/shoppingcart', 'ShoppingCartController@index')->name('show.cart');
 Route::post('/shoppingcartDishDelete', 'ShoppingCartController@destroy')->name('cart.dish.delete');
 Route::post('/deleteByOne', 'ShoppingCartController@deleteByOne')->name('deleteByOne');
 
-Route::get('countries', 'HomeController@countries');
+Route::post('/reservation', 'ReservationController@store')->name('add.reservation');

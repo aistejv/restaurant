@@ -10,7 +10,7 @@
       </div>
     </div>
   </section>
-<div class="col-md-8 my-5">
+<div class="col-md-8 my-5"> 
 
   <form method="POST" action="{{route('dish.update', $dish)}}">
     @method ('PUT')

@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '';
 
     /**
      * Create a new controller instance.
@@ -39,6 +39,12 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+    public function showRegistrationForm()
+    {
+        $countries = Countries::all();
+        // dd($countries);
+        return view('auth.register', compact('countries'));
     }
 
     /**
@@ -82,4 +88,12 @@ class RegisterController extends Controller
             'country' => $data['country'],
         ]);
     }
+
+    // public function countries()
+    // {
+    //     $countries = Countries::all();
+    //     // dd($countries);
+    //
+    //     return view('countries',compact('countries'));
+    // }
 }

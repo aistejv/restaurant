@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout.master')
 
 @section('content')
 <div class="container">
@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}"  autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback">
@@ -28,7 +28,7 @@
                             <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
 
                             <div class="col-md-6">
-                                <input id="surname" type="text" class="form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}" name="surname" value="{{ old('name') }}" required autofocus>
+                                <input id="surname" type="text" class="form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}" name="surname" value="{{ old('name') }}"  autofocus>
 
                                 @if ($errors->has('surname'))
                                     <span class="invalid-feedback">
@@ -41,7 +41,7 @@
                             <label for="birth" class="col-md-4 col-form-label text-md-right">{{ __('Date of birth') }}</label>
 
                             <div class="col-md-6">
-                                <input id="birth" type="text" class="form-control{{ $errors->has('birth') ? ' is-invalid' : '' }}" name="birth" value="{{ old('birth') }}" required autofocus>
+                                <input id="birth" type="text" class="form-control{{ $errors->has('birth') ? ' is-invalid' : '' }}" name="birth" value="{{ old('birth') }}"  autofocus>
 
                                 @if ($errors->has('birth'))
                                     <span class="invalid-feedback">
@@ -55,7 +55,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" >
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
@@ -69,7 +69,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" >
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
@@ -83,7 +83,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                             </div>
                         </div>
 
@@ -91,7 +91,7 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required autofocus>
+                                <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}"  autofocus>
 
                                 @if ($errors->has('address'))
                                     <span class="invalid-feedback">
@@ -105,7 +105,7 @@
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city') }}" required autofocus>
+                                <input id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city') }}"  autofocus>
 
                                 @if ($errors->has('city'))
                                     <span class="invalid-feedback">
@@ -119,7 +119,7 @@
                             <label for="zip_code" class="col-md-4 col-form-label text-md-right">{{ __('Zip code') }}</label>
 
                             <div class="col-md-6">
-                                <input id="zip_code" type="text" class="form-control{{ $errors->has('zip_code') ? ' is-invalid' : '' }}" name="zip_code" value="{{ old('zip_code') }}" required autofocus>
+                                <input id="zip_code" type="text" class="form-control{{ $errors->has('zip_code') ? ' is-invalid' : '' }}" name="zip_code" value="{{ old('zip_code') }}" autofocus>
 
                                 @if ($errors->has('zip_code'))
                                     <span class="invalid-feedback">
@@ -130,21 +130,19 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
-
+                          <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
                             <div class="col-md-6">
-                                <input id="country" type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ old('country') }}" required autofocus>
-
+                                <select class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ old('country') }}"  autofocus>
+                                <option value="">Choose your country</option>
+                                @foreach($countries as $country)
+                                  <option>{{$country->name->common}}</option>
+                                @endforeach
+                                </select>
                                 @if ($errors->has('country'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('country') }}</strong>
                                     </span>
                                 @endif
-                                {{-- <select class="countries">
-                                @foreach ($countries as $country)
-                                <option value="1">{{$country->name->common}}</option>
-                               @endforeach
-                              </select> --}}
                             </div>
                         </div>
 
