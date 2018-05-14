@@ -64,4 +64,7 @@ Route::get('/shoppingcart', 'ShoppingCartController@index')->name('show.cart');
 Route::post('/shoppingcartDishDelete', 'ShoppingCartController@destroy')->name('cart.dish.delete');
 Route::post('/deleteByOne', 'ShoppingCartController@deleteByOne')->name('deleteByOne');
 
+Route::get('/checkout', 'OrderController@checkout')->name('checkout')->middleware('auth');
+Route::get('/profile', 'UserController@show')->name('users.profile');
+
 Route::post('/reservation', 'ReservationController@store')->name('add.reservation');

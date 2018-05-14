@@ -41,7 +41,10 @@
         <h4>Total order sum: {{$shoppingCart->totalPrice}} &euro;</h4>
         <h4>Total TAX: {{round(($shoppingCart->totalPrice)*0.21, 2)}} &euro;</h4>
         <h4>Total sum with TAX: {{round(($shoppingCart->totalPrice)*1.21, 2)}} &euro;</h4>
+        {{-- <button action="" type="submit" class="btn btn-primary btn-lg">Checkout</button> --}}
+        <a href="{{route('checkout')}}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Checkout</a>
       </div>
+
     </div>
 
     @else

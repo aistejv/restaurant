@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Countries;
 use App\Dish;
+use App\Main;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,9 @@ class HomeController extends Controller
 
     {   $promos = Dish::latest()->take(9)->get();
         $images = Dish::all();
-        return view('welcome', compact('promos', 'images'));
+        $mains = Main::all();
+        $dishes = Dish::all();
+        return view('welcome', compact('promos', 'images', 'mains', 'dishes'));
     }
 
 

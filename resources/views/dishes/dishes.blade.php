@@ -55,11 +55,12 @@
                       <h5 class="mt-0">{{$dish->title}}</h5>
                       <p>{{$dish->description}}</p>
                       <h6 class="text-primary menu-price">{{$dish->price}} &euro;</h6>
-                      <form method="post" action="{{route('add.cart')}}">
+                      {{-- <form method="post" action="{{route('add.cart')}}">
                         @csrf
                         <input type="hidden" name="id" value="{{$dish->id}}">
                       <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
-                      </form>
+                      </form> --}}
+                      <button  data-id="{{$dish->id}}" class="cart btn btn-primary btn-sm btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button>
                     </div>
                   </div>
                 </div>
@@ -70,6 +71,41 @@
 
         </div>
       </div>
+
+      <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"></script>
+      <script type="text/javascript">
+      $(document).ready(function () {
+        $.ajaxSetup({
+          headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+        $('button.cart').click(function () {
+          var dish_id = $(this).data('id');
+          var url = "/shoppingcart";
+          console.log(dish_id);
+
+          $.ajax({
+            type:'Post',
+            url: url,
+            data: {id:dish_id},
+            dataType:'json',
+
+            success: function (data) {
+              console.log(data);
+              $('#totalquantity').html(data.totalQuantity);
+            },
+
+            error: function (data){
+              console.log('Error:', data);
+            }
+          });
+        });
+      });
+      </script>
     </section>
 
 @endsection

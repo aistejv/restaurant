@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 class ShoppingCartController extends Controller
 {
     public function addToCart(Request $request){
+      $plius=$request->input('name');
       $id = $request->input('id');
       $dish = Dish::findorfail($id);
       $oldCart = (Session::has('cart')) ? Session::get('cart') : null;
@@ -18,7 +19,13 @@ class ShoppingCartController extends Controller
 
       $request->session()->put('cart', $shoppingCart);
 
+      // return redirect()->back();
+      if(isset($plius)){
       return redirect()->back();
+      }else{
+      return response()->json($shoppingCart);
+      }
+
     }
 
     public function index(){
