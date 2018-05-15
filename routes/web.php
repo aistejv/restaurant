@@ -13,6 +13,10 @@
 
 Route::get('/', 'HomeController@index')->name('welcome');
 
+// Route::get('/contacts', function(){
+//     return View('contacts')
+// })->name('contacts');
+
 
 // Auth::routes();
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -68,3 +72,10 @@ Route::get('/checkout', 'OrderController@checkout')->name('checkout')->middlewar
 Route::get('/profile', 'UserController@show')->name('users.profile');
 
 Route::post('/reservation', 'ReservationController@store')->name('add.reservation');
+
+//CART//
+Route::get('/addDIsh/{dishId}', 'CartController@addItem')->name('addToCart');
+Route::get('/cart', 'CartController@showCart')->name('showCart');
+Route::delete('/cart/{cartItem}', 'CartController@destroy')->name('itemCart.delete');
+
+//ORDER//

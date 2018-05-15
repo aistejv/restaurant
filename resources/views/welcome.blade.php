@@ -126,7 +126,7 @@
             </div>
           @endforeach
         </div>
-        
+
       </div>
     </div>
     </div>
@@ -245,7 +245,31 @@
       </div>
     </div>
   </section>
+
+
+
   <div id="map"></div>
+  <script type="text/javascript">
+    function initMap() {
+  var uluru = {lat: 54.6716991, lng: 25.2748479};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: uluru
+  });
+  var marker = new google.maps.Marker({
+    position: uluru,
+    map: map
+  });
+}
+  </script>
+<!-- Replace the value of the key parameter with your own API key. -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA56VIRJbRNyWSI4JLyA4bPK-A_IKkjJEg&callback=initMap"
+type="text/javascript"></script>
+
+
+    <iframe src="https://snazzymaps.com/embed/71263" width="100%" height="600px" style="border:none;"></iframe>
+  </div>
+</div>
   <!-- END section -->
 
 
