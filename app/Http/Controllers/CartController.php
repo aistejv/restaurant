@@ -53,6 +53,24 @@ class CartController extends Controller
   public function destroy(CartItem $cartItem)
   {
     $cartItem->delete();
-    return redirect()->route('showCart')->with('success', 'Dish deleted successfully!');
+    return redirect()->route('showCart')->with('success', 'Dish removed from your shopping cart successfully!');
+  }
+
+  public function addItemAjax($dishId){
+    $cart = Cart::where('user_id', Auth::user()->id)->first();
+    if(!$cart){
+      $cart = new Cart();
+      $cart->user_id = Auth::user()->id;
+      $cart->save();
+    }
+
+    $cartItem = new CartItem();
+    $cartItem->cart_id = $cart->id;
+    $cartItem->dish_id = $dishId;
+    $cartItem->save();
+
+    $items = $cart->cartItems;
+
+    return response()->json(['items' => $items]);
   }
 }

@@ -2,16 +2,16 @@
 @extends('layout.master')
 
 @section('content')
-  @if(session('message'))
-      <div class="alert alert-success col-sm-2 my-5">
-        {{session('message')}}
-      </div>
-  @endif
   <section class="ftco-cover" style="background-image: url(images/bg_3.jpg);" id="section-home">
     <div class="container">
       <div class="row align-items-center justify-content-center text-center ftco-vh-80">
         <div class="col-md-12">
           <h1 class="ftco-heading ftco-animate mb-3">Welcome To Taste Restaurant</h1>
+          @if(session('success'))
+            <div class="alert alert-success col-sm-2 my-5">
+              {{session('success')}}
+            </div>
+          @endif
           <p><a href="https://free-template.co/" target="_blank" class="btn btn-primary btn-lg ftco-animate" data-toggle="modal" data-target="#reservationModal">Reservation</a></p>
         </div>
       </div>

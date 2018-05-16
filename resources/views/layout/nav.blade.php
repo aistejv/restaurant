@@ -14,7 +14,7 @@
         <li class="nav-item"><a href="#section-news" class="nav-link">News</a></li>
         <li class="nav-item"><a href="#section-gallery" class="nav-link">Gallery</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Contacts</a></li>
-        <li class="nav-item"><a href="{{route('showCart')}}" class="nav-link">CART</a></li>
+        <li class="nav-item"><a href="{{route('showCart')}}" class="nav-link">CART <span id="incart">{{$totalItems}}</span></a></li>
         <li class="nav-item"><a href="{{route('show.cart')}}" class="nav-link"> <i class="fas fa-shopping-basket"></i> Shopping Cart  <span id="totalquantity" class="badge badge-light">
           @if(Session::has('cart'))
             {{Session::get('cart')->totalQuantity}}

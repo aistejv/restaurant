@@ -10,7 +10,7 @@
 <div class="container">
   <h2>Your shopping cart</h2>
   <div class="row">
-    <div class="col-md-4 my-2">
+    <div class="col-md-6 my-2">
 
       <ul>
         @foreach($items as $item)
@@ -31,7 +31,7 @@
         <li>Total items: {{$totalItems}}</li>
         <li>Total price: {{$totalPrice}} &euro;</li>
         <a href="" class="btn btn-secondary btn-lg">Continue shopping</a>
-        <a href="" class="btn btn-secondary btn-lg">Checkout</a>
+        <a href="{{route('checkout')}}" class="btn btn-secondary btn-lg">Checkout</a>
       </ul>
     </div>
   </div>

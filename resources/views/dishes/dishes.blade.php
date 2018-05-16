@@ -62,7 +62,7 @@
                       </form> --}}
                       <button  data-id="{{$dish->id}}" class="cart btn btn-primary btn-sm btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button>
 
-                      <button class="btn btn-secondary btn-sm"><a href="{{route('addToCart', $dish->id)}}">Add to cart</a></button>
+                      <a data-dish="{{$dish->id}}" class="btn btn-secondary btn-sm btn-to-cart" href="{{route('addToCart', $dish->id)}}">Add to cart</a>
 
 
                     </div>

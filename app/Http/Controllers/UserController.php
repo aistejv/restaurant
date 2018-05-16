@@ -4,17 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Order;
 
 class UserController extends Controller
 {
-  public function show(){
-    $orders = Auth::user()->orders;
+  public function __construct(){
+    $this->middleware('auth'); //tik prisiregistravusiems//
+  }
 
-    $orders->transform(function($order,$key){
-      $order->cart = unserialize($order->cart);
-      return $order;
-    });
-    $orders->all();
+  public function show(){
+    $orders = Order::where('user_id', Auth::user()->id)->get();
     return view('users.profile', compact('orders'));
   }
 }
