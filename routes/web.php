@@ -36,7 +36,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/dishes', 'DishController@index')->name('all.dishes');
 Route::get('/dishes/{id}', 'DishController@show')->name('one.dish');
 
-Route::group(['middleware'=> ['auth'], 'prefix'=>'admin'],function (){
+Route::group(['middleware'=> ['admin'], 'prefix'=>'admin'],function (){
   Route::get('/', 'AdminController@index');
   Route::get('/dishes', 'DishController@admin')->name('admin.dishes');
   Route::get('/dishes/{id}', 'DishController@adminshow')->name('one.dish');
@@ -60,6 +60,9 @@ Route::group(['middleware'=> ['auth'], 'prefix'=>'admin'],function (){
   Route::get('/reservations/{reservation}/edit','ReservationController@edit')->name('reservation.edit');
   Route::put('/reservations/{reservation}/update', 'ReservationController@update')->name('reservation.update');
   Route::delete('/reservations/{reservation}','ReservationController@destroy')->name('reservation.delete');
+
+  Route::get('/orders', 'OrderController@adminIndex')->name('admin.orders');
+  Route::get('/order/{id}', 'OrderController@adminShow')->name('admin.order');
 
 });
 

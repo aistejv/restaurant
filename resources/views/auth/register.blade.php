@@ -41,7 +41,7 @@
                             <label for="birth" class="col-md-4 col-form-label text-md-right">{{ __('Date of birth') }}</label>
 
                             <div class="col-md-6">
-                                <input id="birth" type="text" class="form-control{{ $errors->has('birth') ? ' is-invalid' : '' }}" name="birth" value="{{ old('birth') }}"  autofocus>
+                                <input id="birth" type="date" class="form-control{{ $errors->has('birth') ? ' is-invalid' : '' }}" name="birth" value="{{ old('birth') }}"  autofocus>
 
                                 @if ($errors->has('birth'))
                                     <span class="invalid-feedback">

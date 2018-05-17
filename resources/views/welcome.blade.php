@@ -2,7 +2,7 @@
 @extends('layout.master')
 
 @section('content')
-  <section class="ftco-cover" style="background-image: url(images/bg_3.jpg);" id="section-home">
+  <section class="ftco-cover mt-5" style="background-image: url(images/bg_3.jpg);" id="section-home">
     <div class="container">
       <div class="row align-items-center justify-content-center text-center ftco-vh-80">
         <div class="col-md-12">
@@ -266,8 +266,8 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA56VIRJbRNyWSI4JLyA4bPK-A_IKkjJEg&callback=initMap"
 type="text/javascript"></script>
 
-
-    <iframe src="https://snazzymaps.com/embed/71263" width="100%" height="600px" style="border:none;"></iframe>
+    Snazzymaps map
+    {{-- <iframe src="https://snazzymaps.com/embed/71263" width="100%" height="600px" style="border:none;"></iframe> --}}
   </div>
 </div>
   <!-- END section -->

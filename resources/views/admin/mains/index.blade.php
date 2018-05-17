@@ -8,46 +8,39 @@
         {{session('success')}}
       </div>
     @endif
+  <div class="container">
     <div class="row">
       <div class="col-md-2">
         <p class="mb-0"><a href="{{route('create.main')}}" class="btn btn-primary btn-sm">Add a new main</a></p>
       </div>
     </div>
-
-
         <div class="row">
           <table class="table table-striped table-dark ">
             <thead>
               <tr>
                 <th scope="col">Title of Main</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr>
               @foreach($mains as $main)
                 <td>{{$main->title}}</td>
-              </tr>
-              <tr>
                 <td>
-                   <form method="POST" action="{{route('main.delete', $main)}}">
+                  <form method="POST" action="{{route('main.delete', $main)}}">
                     @method('DELETE')
                     @csrf
                     <p class="mb-0"><button type="submit" href="#" class="btn btn-primary btn-sm">Delete</button></p>
                   </form>
-                    <p class="mb-0"><a href="{{route('main.edit', $main->id)}}" class="btn btn-primary btn-sm">Edit</a></p>
+                  <p class="mb-0"><a href="{{route('main.edit', $main->id)}}" class="btn btn-primary btn-sm">Edit</a></p>
                 </td>
-
-
               </tr>
+
             @endforeach
             </tbody>
           </table>
-
-
-
-
-
         </div>
+      </div>
 
 
   @endsection

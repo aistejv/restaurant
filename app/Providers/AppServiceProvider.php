@@ -32,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
 
        $view->with('totalItems', $totalItems);
      }
+     else {
+       $totalItems = 0;
+       $view->with('totalItems', $totalItems);
+     }
         });
     }
 

@@ -15,7 +15,7 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="name">First Name</label>
-                  <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" name="name">
+                  <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" value="{{Auth::check() ? Auth::user()->name : ''}}" name="name">
                   @if ($errors->has('name'))
                       <span class="invalid-feedback">
                           <strong>{{ $errors->first('name') }}</strong>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="surname">Last Name</label>
-                  <input type="text" class="form-control {{ $errors->has('surname') ? ' is-invalid' : '' }}" id="surname" name="surname">
+                  <input type="text" class="form-control {{ $errors->has('surname') ? ' is-invalid' : '' }}" id="surname" value="{{Auth::check() ? Auth::user()->surname : ''}}" name="surname">
                   @if ($errors->has('surname'))
                       <span class="invalid-feedback">
                           <strong>{{ $errors->first('surname') }}</strong>
@@ -35,7 +35,7 @@
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label for="email">Email</label>
-                  <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email">
+                  <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" value="{{Auth::check() ? Auth::user()->email : ''}}" name="email">
                   @if ($errors->has('email'))
                       <span class="invalid-feedback">
                           <strong>{{ $errors->first('email') }}</strong>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="phone">Phone</label>
-                  <input type="text" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" id="m_phone" name="phone">
+                  <input type="text" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" id="m_phone"  name="phone">
                   @if ($errors->has('phone'))
                       <span class="invalid-feedback">
                           <strong>{{ $errors->first('phone') }}</strong>

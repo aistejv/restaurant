@@ -30,7 +30,7 @@
       <ul>
         <li>Total items: {{$totalItems}}</li>
         <li>Total price: {{$totalPrice}} &euro;</li>
-        <a href="" class="btn btn-secondary btn-lg">Continue shopping</a>
+        <a href="{{route('all.dishes')}}" class="btn btn-secondary btn-lg">Continue shopping</a>
         <a href="{{route('checkout')}}" class="btn btn-secondary btn-lg">Checkout</a>
       </ul>
     </div>

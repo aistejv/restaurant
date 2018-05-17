@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-primary" id="ftco-navbar">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-primary fixed-top" id="ftco-navbar">
   <div class="container">
     <a class="navbar-brand" href="{{route('welcome')}}">Taste</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,21 +7,26 @@
 
     <div class="collapse navbar-collapse" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a href="{{route('welcome')}}" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#section-home" class="nav-link">About</a></li>
         <li class="nav-item active"><a href="{{route('all.dishes')}}" class="nav-link">Dishes</a></li>
         <li class="nav-item"><a href="#section-offer" class="nav-link">Offer</a></li>
         <li class="nav-item"><a href="#section-menu" class="nav-link">Menu</a></li>
         <li class="nav-item"><a href="#section-news" class="nav-link">News</a></li>
         <li class="nav-item"><a href="#section-gallery" class="nav-link">Gallery</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Contacts</a></li>
-        <li class="nav-item"><a href="{{route('showCart')}}" class="nav-link">CART <span id="incart">{{$totalItems}}</span></a></li>
-        <li class="nav-item"><a href="{{route('show.cart')}}" class="nav-link"> <i class="fas fa-shopping-basket"></i> Shopping Cart  <span id="totalquantity" class="badge badge-light">
+        <li class="nav-item"><a href="#section-contact" class="nav-link">Contacts</a></li>
+        <li class="nav-item"><a href="{{route('showCart')}}" class="nav-link"><i class="fas fa-shopping-basket"></i> CART <span id="incart">{{$totalItems}}</span></a></li>
+
+          {{-- //Cart su sessions// --}}
+        {{-- <li class="nav-item"><a href="{{route('show.cart')}}" class="nav-link"> <i class="fas fa-shopping-basket"></i> Shopping Cart  <span id="totalquantity" class="badge badge-light">
           @if(Session::has('cart'))
             {{Session::get('cart')->totalQuantity}}
           @else 0
-          @endif</span></a></li>
+          @endif</span></a></li> --}}
 
-        <a href="{{route('users.profile')}}" class="nav-link dropdown-toggle">Profile</a>
+
+        <li class="nav-item"><a href="{{route('users.profile')}}" class="nav-link">Your orders</a></li>
+
+        {{-- <a href="{{route('users.profile')}}" class="nav-link dropdown-toggle">Profile</a> --}}
 
         <!-- Authentication Links -->
         @guest

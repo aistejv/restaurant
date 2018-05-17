@@ -56,7 +56,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-purple sidebar-mini">
+<body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -139,6 +139,7 @@ desired effect
                 <li class="active"><a href="{{route('admin.dishes')}}"><i class="fa fa-link"></i> <span>Dishes</span></a></li>
                 <li><a href="{{route('admin.mains')}}"><i class="fa fa-link"></i> <span>Mains</span></a></li>
                 <li><a href="{{route('admin.reservations')}}"><i class="fa fa-link"></i> <span>Reservations</span></a></li>
+                <li><a href="{{route('admin.orders')}}"><i class="fa fa-link"></i> <span>Orders</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
                         <span class="pull-right-container">

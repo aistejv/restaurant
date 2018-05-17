@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Reservation;
+
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReservationCompleted;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReservationValidation;
 
@@ -38,7 +42,7 @@ class ReservationController extends Controller
      */
     public function store(ReservationValidation $request)
     {
-      Reservation::create([
+      $reservation = Reservation::create([
         'name' => $request->input('name'),
         'surname' => $request->input('surname'),
         'email' => $request->input('email'),
@@ -48,7 +52,9 @@ class ReservationController extends Controller
         'time' => $request->input('time'),
       ]);
 
-    return view('welcome')->with('success','Thank you for the reservation!');
+      Mail::to($request->email)->send(new ReservationCompleted($reservation));
+
+    return redirect()->route('welcome')->with('success','Thank you for the reservation!');
     }
 
 

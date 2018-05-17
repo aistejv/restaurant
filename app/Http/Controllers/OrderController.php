@@ -42,6 +42,17 @@ class OrderController extends Controller
   return redirect()->route('welcome')->with('success', 'Thank you for shopping!');
   }
 
+  public function adminIndex(){
+    $orders = Order::all();
+    return view('admin.orders.index', compact('orders'));
+  }
+
+  public function adminShow($id){
+    $order = Order::find($id);
+    // dd($order->orderItems);
+    return view('admin.orders.order', compact('order'));
+  }
+
 }
 
 

@@ -27,8 +27,8 @@ class ReservationValidation extends FormRequest
           'name' => 'required',
           'surname' => 'required',
           'number_of_persons' => 'required',
-          'email' => 'required',
-          'phone' => 'required',
+          'email' => 'required|email',
+          'phone' => 'required|numeric',
           'date' => 'required',
           'time' => 'required',
         ];
